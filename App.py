@@ -1,14 +1,7 @@
-import tkinter as tk
-from tkinter import ttk
 import customtkinter 
-
 
 customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("dark-blue")
-
-class Login(customtkinter.CTk):
-	def __init__(self, title, size):
-		super().__init__()
 	
 
 class App(customtkinter.CTk):
@@ -26,15 +19,15 @@ class App(customtkinter.CTk):
 		self.grid_rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9), weight=1)
 		
 		# modules
-		self.menu = Menu(self)
-		self.mainScreen = MainScreen(self)    
+		self.menu = MenuFrame(self)
+		self.mainScreen = MainFrame(self)    
 
         # run 
 		self.mainloop()  
                 
         
 
-class Menu(customtkinter.CTkFrame):
+class MenuFrame(customtkinter.CTkFrame):
 	def __init__(self, parent):
 		super().__init__(parent)
 		
@@ -59,7 +52,7 @@ class Menu(customtkinter.CTkFrame):
 		menu_button2.pack(padx=20, pady=4)
 		menu_button3.pack(padx=20, pady=4)
 
-class MainScreen(customtkinter.CTkFrame):
+class MainFrame(customtkinter.CTkFrame):
 	def __init__(self, parent):
 		super().__init__(parent)
 		
@@ -76,8 +69,7 @@ class MainScreen(customtkinter.CTkFrame):
 		
 		# place the widgets
 		
-
+App('Main application', (1280, 720))
 		
               
-        
-App('Classed based app', (1280, 720))
+       

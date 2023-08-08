@@ -22,7 +22,6 @@ class Login(customtkinter.CTk):
 		self.mainloop()  
 
 class LoginFrame(customtkinter.CTkFrame):
-		
 		def __init__(self, parent):
 			super().__init__(parent)
 			
@@ -56,13 +55,46 @@ class LoginFrame(customtkinter.CTkFrame):
 			print("Username and password:")
 			print(username)
 			print(password)
-
+			
+			
 
 		def registerCommand(self):
 			username = self.usernameEntry.get()
 			password = self.passwordEntry.get()
+
+			self.database(username, password)
+
 			print("Ping")
 		
+		def database(self, username : str, password : str):
+		# Create Table
+			self.conn = sqlite3.connect('login.db')
+			self.cursor = self.conn.cursor()	
+			
+			if username and password:
+
+				self.table_create_query = '''CREATE TABLE IF NOT EXISTS Login_Data 
+						(usernameSql TEXT, passwordSql TEXT)'''
+				
+				self.conn.execute(self.table_create_query)
+
+				self.cursor.execute("SELECT * FROM Login_Data WHERE usernameSql = ?",(username,))
+
+				if self.cursor.fetchone() == None: 
+					# Insert Data
+					self.data_insert_query = '''INSERT INTO Login_Data (usernameSql, passwordSql) VALUES (?, ?)'''
+					self.data_insert_tuple = (username, password)
+
+					self.cursor.execute(self.data_insert_query, self.data_insert_tuple)
+					
+				else:
+					print("Username already exists, choose another!") 
+					
+			else:
+				print("You need to type in both username and password!")
+					
+			self.conn.commit()
+			self.conn.close()
 
 
 Login('Login', (854,480))

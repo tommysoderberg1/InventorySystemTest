@@ -1,7 +1,7 @@
 import customtkinter
 from tkinter import messagebox
 import sqlite3
-
+from App import *
 
 customtkinter.set_appearance_mode("Dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -18,9 +18,10 @@ class Login(customtkinter.CTk):
 		
 		# modules
 		self.loginFrame = LoginFrame(self)
-
+		
 		# run
 		self.mainloop()  
+	
 
 class LoginFrame(customtkinter.CTkFrame):
 		def __init__(self, parent):
@@ -92,7 +93,14 @@ class LoginFrame(customtkinter.CTkFrame):
 				if nameAndPw == "None": 
 					messagebox.showinfo("","Account does not exist, register a new account")
 				else:
-					messagebox.showinfo("You are being logged in")
+					
+					messagebox.showinfo("","You are being logged in")
+
+					App('Main application', (1280, 720), username)
+					
+					
+					
+					
 					
 			else:
 				messagebox.showinfo("","You need to type in both username and password!")
@@ -165,8 +173,7 @@ class LoginFrame(customtkinter.CTkFrame):
 					
 			self.conn.commit()
 			self.conn.close()
-		# def myMessageBox():
-		# 	messagebox.showinfo()
+		
 
 
 Login('Login', (854,480))

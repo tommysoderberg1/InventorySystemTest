@@ -5,10 +5,11 @@ customtkinter.set_default_color_theme("dark-blue")
 	
 
 class App(customtkinter.CTk):
-	def __init__(self, title, size):
+	def __init__(self, title, size, username):
         
 		# main setup
 		super().__init__()	
+		self.username = username
 		self.title(title)
 		self.geometry(f'{size[0]}x{size[1]}')
 		self.minsize(size[0],size[1])
@@ -30,7 +31,7 @@ class App(customtkinter.CTk):
 class MenuFrame(customtkinter.CTkFrame):
 	def __init__(self, parent):
 		super().__init__(parent)
-		
+				
 		# place frame on maingrid
 		self.grid(row=0, column=0, rowspan=10, sticky="nsw")
 		
@@ -69,7 +70,7 @@ class MainFrame(customtkinter.CTkFrame):
 		
 		# place the widgets
 		
-App('Main application', (1280, 720))
+
 		
               
        

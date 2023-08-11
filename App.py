@@ -20,7 +20,7 @@ class App(ctk.CTk):
         self.frame_menu.place(x=10, y=10)
 
         # create widgets Menuframe
-        self.label1_menu = ctk.CTkLabel(self.frame_menu, text="User:" + str(username))
+        self.label1_menu = ctk.CTkLabel(self.frame_menu, text="User: " + str(username))
         self.entry_menu = ctk.CTkEntry(self.frame_menu, placeholder_text="Asset or Workorder nr")
         self.button__menu_search = ctk.CTkButton(self.frame_menu, text = 'Search')
         self.button__menu_advanced_search = ctk.CTkButton(self.frame_menu, text = 'Advanced Search')

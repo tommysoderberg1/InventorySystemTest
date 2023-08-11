@@ -78,7 +78,7 @@ class LoginFrame(customtkinter.CTkFrame):
 				
 				self.data_insert_query = '''INSERT INTO Login_Data (usernameSql, passwordSql, emailSql, 
 						userIdSql, userLevelSql) VALUES (?, ?, ?, ?, ?)'''
-				self.data_insert_tuple = ("Tommy", "password", "admin@email.com", "100001", "King")
+				self.data_insert_tuple = ("Admin", "password", "admin@email.com", "100001", "Admin")
 				self.cursor.execute(self.data_insert_query, self.data_insert_tuple)
 
 			# verify input for login and login if criteria is met

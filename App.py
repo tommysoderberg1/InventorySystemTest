@@ -7,7 +7,7 @@ class App(ctk.CTk):
 
         self.username = username
         
-        # self settings
+        # window settings
         self_size = '1200x800'
         self.title("Main Application")
         self.geometry(self_size)

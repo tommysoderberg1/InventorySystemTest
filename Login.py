@@ -11,7 +11,6 @@ class Login(customtkinter.CTk):
 	def __init__(self, title, size):
 		super().__init__()
 		
-		
 		self.title(title)
 		self.geometry(f'{size[0]}x{size[1]}')
 		self.minsize(size[0],size[1])
@@ -22,7 +21,6 @@ class Login(customtkinter.CTk):
 		# run
 		self.mainloop()  
 	
-
 class LoginFrame(customtkinter.CTkFrame):
 		def __init__(self, parent):
 			super().__init__(parent)
@@ -90,23 +88,15 @@ class LoginFrame(customtkinter.CTkFrame):
 
 				if nameAndPw == "None": 
 					messagebox.showinfo("","Account does not exist, register a new account")
-				else:
-					
+				else:			
 					messagebox.showinfo("","You are being logged in, you can close the login window")
-
 					App(username)
-					
-					
-					
-					
-					
+
 			else:
-				messagebox.showinfo("","You need to type in both username and password!")
-					
+				messagebox.showinfo("","You need to type in both username and password!")	
 			self.conn.commit()
 			self.conn.close()	
 			
-
 		def registerCommand(self):
 			username = self.usernameEntry.get()
 			password = self.passwordEntry.get()
@@ -125,7 +115,6 @@ class LoginFrame(customtkinter.CTkFrame):
 				self.table_create_query = '''CREATE TABLE IF NOT EXISTS Login_Data 
 						(usernameSql TEXT, passwordSql TEXT, emailSql TEXT, userIdSql TEXT, userLevelSql TEXT)'''
 				
-
 				self.conn.execute(self.table_create_query)
 
 				self.cursor.execute("SELECT * FROM Login_Data WHERE usernameSql = ?",(username,))
@@ -172,6 +161,5 @@ class LoginFrame(customtkinter.CTkFrame):
 			self.conn.commit()
 			self.conn.close()
 		
-
 
 Login('Login', (854,480))

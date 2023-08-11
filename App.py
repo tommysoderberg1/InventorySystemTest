@@ -7,7 +7,6 @@ class App(ctk.CTk):
 
         self.username = username
         
-
         # self settings
         self_size = '1200x800'
         self.title("Main Application")
@@ -72,7 +71,4 @@ class App(ctk.CTk):
         self.frame_mainframe3_label1.place(x=500, y=10)
 
 
-
-
-    
         self.mainloop()

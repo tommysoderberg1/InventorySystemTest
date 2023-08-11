@@ -1,76 +1,78 @@
-import customtkinter 
+import customtkinter as ctk
+from tkinter import *
 
-customtkinter.set_appearance_mode("Dark")
-customtkinter.set_default_color_theme("dark-blue")
-	
+class App(ctk.CTk):
+    def __init__(self, username : str):
+        super().__init__()
 
-class App(customtkinter.CTk):
-	def __init__(self, title, size, username):
+        self.username = username
         
-		# main setup
-		super().__init__()	
-		self.username = username
-		self.title(title)
-		self.geometry(f'{size[0]}x{size[1]}')
-		self.minsize(size[0],size[1])
-		# self.maxsize(size[0],size[1])
-		
-		# main grid layout 5x5
-		self.grid_columnconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9), weight=1)
-		self.grid_rowconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8, 9), weight=1)
-		
-		# modules
-		self.menu = MenuFrame(self)
-		self.mainScreen = MainFrame(self)    
 
-        # run 
-		self.mainloop()  
+        # self settings
+        self_size = '1200x800'
+        self.title("Main Application")
+        self.geometry(self_size)
+        self.minsize(1200,800)
+        self.maxsize(1200,800)
                 
-        
+        # -------------------------- Menuframe ----------------------------#
+        self.frame_menu = ctk.CTkFrame(self, width= 150, height= 780,)  
+        self.frame_menu.place(x=10, y=10)
 
-class MenuFrame(customtkinter.CTkFrame):
-	def __init__(self, parent):
-		super().__init__(parent)
-				
-		# place frame on maingrid
-		self.grid(row=0, column=0, rowspan=10, sticky="nsw")
-		
-		# modules on menu
-		self.create_widgets()
+        # create widgets Menuframe
+        self.label1_menu = ctk.CTkLabel(self.frame_menu, text="User:" + str(username))
+        self.entry_menu = ctk.CTkEntry(self.frame_menu, placeholder_text="Asset or Workorder nr")
+        self.button__menu_search = ctk.CTkButton(self.frame_menu, text = 'Search')
+        self.button__menu_advanced_search = ctk.CTkButton(self.frame_menu, text = 'Advanced Search')
 
-	def create_widgets(self):
-		
-		# create the widgets 
-		menu_entry = customtkinter.CTkEntry(self)
-		menu_button_search = customtkinter.CTkButton(self, text = 'Search')
-		menu_button2 = customtkinter.CTkButton(self, text = 'Button 2')
-		menu_button3 = customtkinter.CTkButton(self, text = 'Button 3')
+        self.button_menu_1 = ctk.CTkButton(self.frame_menu, text = 'Create asset',
+                command=lambda: self.frame_mainframe1.tkraise())
+        self.button_menu_2 = ctk.CTkButton(self.frame_menu, text = 'Create workorder', 
+                command=lambda: self.frame_mainframe2.tkraise())
+        self.button_menu_3 = ctk.CTkButton(self.frame_menu, text = 'Statistics',
+                command=lambda: self.frame_mainframe3.tkraise())
+
+        # place widgets Menuframe
+        self.label1_menu.place(x=0, y=0)
+        self.entry_menu.place(x=5, y=30)
+        self.button__menu_search.place(x=5, y=60)
+        self.button__menu_advanced_search.place(x=5, y=90)
+        self.button_menu_1.place(x=5, y=150)
+        self.button_menu_2.place(x=5, y=180)
+        self.button_menu_3.place(x=5, y=210)
+
+        # -------------------------- Mainframe 1 cr --------------------------#
+        self.frame_mainframe1 = ctk.CTkFrame(self, width= 1020, height= 780,)  
+        self.frame_mainframe1.place(x=170, y=10)
+
+        # create widgets Mainframe 1
+        self.frame_mainframe1_label1 = ctk.CTkLabel(self.frame_mainframe1, text="Create asset here")
+
+        # place widgets Mainframe 1
+        self.frame_mainframe1_label1.place(x=500, y=10)
+
+        # -------------------------- Mainframe 2 --------------------------#
+        self.frame_mainframe2 = ctk.CTkFrame(self, width= 1020, height= 780,)  
+        self.frame_mainframe2.place(x=170, y=10)
+
+        # create widgets Mainframe 2
+        self.frame_mainframe2_label1 = ctk.CTkLabel(self.frame_mainframe2, text="Create workorder here")
+
+        # place widgets Mainframe 2
+        self.frame_mainframe2_label1.place(x=500, y=10)
+
+        # -------------------------- Mainframe 3 --------------------------#
+        self.frame_mainframe3 = ctk.CTkFrame(self, width= 1020, height= 780,)  
+        self.frame_mainframe3.place(x=170, y=10)
+
+        # create widgets Mainframe 3
+        self.frame_mainframe3_label1 = ctk.CTkLabel(self.frame_mainframe3, text="Show statistics here")
+
+        # place widgets Mainframe 3
+        self.frame_mainframe3_label1.place(x=500, y=10)
 
 
-		# place the widgets
-		menu_entry.pack(padx=20, pady=(70,4))
-		menu_button_search.pack(padx=20, pady=(0, 30))
-		menu_button2.pack(padx=20, pady=4)
-		menu_button3.pack(padx=20, pady=4)
 
-class MainFrame(customtkinter.CTkFrame):
-	def __init__(self, parent):
-		super().__init__(parent)
-		
-		# place frame on maingrid
-		
-		self.grid(row=1, column=1, rowspan=8, columnspan=8, sticky="nsew")
-		
-		# modules on menu
-		# self.create_widgets()
 
-	# def create_widgets(self):
-		
-		# create the widgets 
-		
-		# place the widgets
-		
-
-		
-              
-       
+    
+        self.mainloop()

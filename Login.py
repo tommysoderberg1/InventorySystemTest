@@ -30,9 +30,7 @@ class LoginFrame(customtkinter.CTkFrame):
 			# place frame
 			self.pack(pady=20, padx=60, fill="both", expand=True)
 
-			# modules on loginframe 
 			# create the widgets 
-			
 			self.label = customtkinter.CTkLabel(self, text = "Inventory System", font=("Roboto", 24))
 			self.usernameEntry = customtkinter.CTkEntry(self, placeholder_text="Username")
 			self.passwordEntry = customtkinter.CTkEntry(self, placeholder_text="Password", show="*")
@@ -43,7 +41,6 @@ class LoginFrame(customtkinter.CTkFrame):
 			self.checkbox = customtkinter.CTkCheckBox(self, text="Remember me")
 			
 			# place widgets
-
 			self.label.pack(pady=12, padx=10)
 			self.usernameEntry.pack(pady=12, padx=10)
 			self.passwordEntry.pack(pady=12, padx=10)
@@ -52,6 +49,7 @@ class LoginFrame(customtkinter.CTkFrame):
 			self.registerButton.pack(pady=10, padx=10)
 			self.forgotPwButton.pack(pady=10, padx=10)
 			self.checkbox.pack(padx=12, pady=10)
+
 		def forgotPwCommand(self):
 			messagebox.showinfo("","Not my problem")
 		
@@ -94,9 +92,9 @@ class LoginFrame(customtkinter.CTkFrame):
 					messagebox.showinfo("","Account does not exist, register a new account")
 				else:
 					
-					messagebox.showinfo("","You are being logged in")
+					messagebox.showinfo("","You are being logged in, you can close the login window")
 
-					App('Main application', (1280, 720), username)
+					App(username)
 					
 					
 					
